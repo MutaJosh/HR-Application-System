@@ -17,6 +17,7 @@ if ($conn->connect_error) {
 $applicant_names = $_POST['applicant'];
 $tel = $_POST['telephone'];
 $email = $_POST['email'];
+$nid = $_POST['nid'];
 $cv = $_POST['cv'];
 $req_letter = $_POST['req_letter'];
 $degree = $_POST['degree'];
