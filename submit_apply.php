@@ -15,14 +15,14 @@ $degree = $_POST['degree'];
 $sql1 = "INSERT INTO users (names, email, telephone, nid, user_type) VALUES ('$applicant_names', '$email', '$tel', '$nid', 'Applicant')";
 
 // get this user id by passing the nid
-$last = "SELECT id FROM users WHERE nid = $nid ";
+/* $last = "SELECT id FROM users WHERE nid = $nid ";
 $user_id = mysqli_query($conn, $last);
 $userid_finder = mysqli_fetch_assoc($user_id);
 $user = $userid_finder['id'];
 
-echo $user;
+echo $user; */
 
-$sql2 = "INSERT INTO health_professional (request_letter, user, cv, degree, created_by, created_date) VALUES('$req_letter', '$user' '$cv', '$degree', '$applicant_names', NOW())";
+$sql2 = "INSERT INTO health_professional (request_letter, cv, degree, created_by, created_date) VALUES('$req_letter', '$cv', '$degree', '$applicant_names', NOW())";
 
 
 if ($conn->query($sql1) === TRUE && $conn->query($sql2) === TRUE) {
