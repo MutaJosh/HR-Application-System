@@ -23,10 +23,8 @@ DROP TABLE IF EXISTS `health_professional`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `health_professional` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Names` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `telephone` varchar(45) NOT NULL,
+  `id` int(11) NOT NULL,
+  `user` int(11) DEFAULT NULL,
   `request_leter` varchar(45) NOT NULL,
   `cv` varchar(45) NOT NULL,
   `degree` varchar(45) NOT NULL,
@@ -36,10 +34,12 @@ CREATE TABLE `health_professional` (
   `updated_date` datetime DEFAULT NULL,
   `voided_by` varchar(45) DEFAULT NULL,
   `voided_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='To store all request about health professional (e.g. Medical Doctors, Nurse, Pharmacists, ...)';
+  PRIMARY KEY (`id`),
+  KEY `fk_health_professional_user_idx` (`user`),
+  CONSTRAINT `fk_health_professional_user` FOREIGN KEY (`user`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='To store all request about health professional (e.g. Medical Doctors, Nurse, Pharmacists, ...)';
 /*!40101 SET character_set_client = @saved_cs_client */;
- /* COLLATE=utf8mb4_0900_ai_ci */
+
 --
 -- Dumping data for table `health_professional`
 --
@@ -63,7 +63,7 @@ CREATE TABLE `health_professional_qualification` (
   KEY `fk_qualification_idx` (`qualification`),
   CONSTRAINT `fk_health_professional` FOREIGN KEY (`health_professional`) REFERENCES `health_professional` (`id`),
   CONSTRAINT `fk_qualification` FOREIGN KEY (`qualification`) REFERENCES `qualification` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,8 +84,8 @@ DROP TABLE IF EXISTS `opening_posting`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `opening_posting` (
   `id` int(11) NOT NULL,
-  `district` varchar(45) DEFAULT NULL,
-  `health_facility` varchar(45) DEFAULT NULL,
+  `user` int(11) DEFAULT NULL,
+  `tor` varchar(45) DEFAULT NULL,
   `start_date` datetime DEFAULT NULL,
   `created_by` varchar(45) DEFAULT NULL,
   `created_date` datetime DEFAULT NULL,
@@ -93,10 +93,12 @@ CREATE TABLE `opening_posting` (
   `updated_date` datetime DEFAULT NULL,
   `voided_by` varchar(45) DEFAULT NULL,
   `voided_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`id`),
+  KEY `fk_opening_posting_user_idx` (`user`),
+  CONSTRAINT `fk_opening_posting_user` FOREIGN KEY (`user`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-/*  COLLATE=utf8mb4_0900_ai_ci */
+
 --
 -- Dumping data for table `opening_posting`
 --
@@ -120,9 +122,9 @@ CREATE TABLE `opening_posting_qualification` (
   KEY `fk_opq_qualification_idx` (`qualification`),
   CONSTRAINT `fk_opq_opening_posting` FOREIGN KEY (`opening_posting`) REFERENCES `opening_posting` (`id`),
   CONSTRAINT `fk_opq_qualification` FOREIGN KEY (`qualification`) REFERENCES `qualification` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-/*  COLLATE=utf8mb4_0900_ai_ci */
+
 --
 -- Dumping data for table `opening_posting_qualification`
 --
@@ -144,9 +146,9 @@ CREATE TABLE `qualification` (
   `name` varchar(45) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-/*  COLLATE=utf8mb4_0900_ai_ci */
+
 --
 -- Dumping data for table `qualification`
 --
@@ -154,6 +156,32 @@ CREATE TABLE `qualification` (
 LOCK TABLES `qualification` WRITE;
 /*!40000 ALTER TABLE `qualification` DISABLE KEYS */;
 /*!40000 ALTER TABLE `qualification` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `telephone` varchar(45) DEFAULT NULL,
+  `doc_no` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -165,4 +193,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-21 10:18:57
+-- Dump completed on 2019-08-21 16:45:46

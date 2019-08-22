@@ -1,7 +1,11 @@
+h3 {
+    margin: 2%;
+}
+
 .register{
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-    margin-top: 3%;
-    padding: 3%;
+    margin-top: 2%;
+    padding: 2%;
 }
 .register-left{
     text-align: center;
@@ -25,6 +29,7 @@
     border-top-left-radius: 10% 50%;
     border-bottom-left-radius: 10% 50%;
 }
+
 .register-left img{
     margin-top: 15%;
     margin-bottom: 5%;
@@ -48,6 +53,11 @@
 .register .register-form{
     padding: 10%;
     margin-top: 10%;
+}
+#register-display{
+    background: #3931af;
+    padding: 5%;
+    margin-top: 5%;
 }
 .btnRegister{
     float: right;
@@ -89,7 +99,26 @@
 }
 .register-heading{
     text-align: center;
-    margin-top: 8%;
-    margin-bottom: -15%;
+    margin-top: 5%;
+    margin-bottom: -12%;
     color: #495057;
+}
+
+.nav img{
+    vertical-align: middle;
+    border-style: none;
+    width: 50%;
+    height: 20%;
+    margin: .8em;
+    margin-bottom: 1em;
+    margin-top: 2em;
+}
+
+.nav h3 {
+    margin-right: 5px;
+    margin-bottom: -50%;
+}
+
+.display {
+    margin-top: 10%;
 }

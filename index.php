@@ -21,8 +21,11 @@
                         <img src="./moh_logo.jpg" alt=""/>
                         <h3>Welcome</h3>
                         <p>You are only required to fill all these fields and submit your application!</p>
-                        <i>If you're an administrator, press the button below!</i> <br> <br><br>
+                        <i>If you're an administrator, press one of the buttons below!</i> <br> <br><br>
+                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#registerModal"> Register </button> 
+                            or
                         <button type="button" class="btn btn-light" data-toggle="modal" data-target="#loginModal"> Login </button> 
+
                     </div>
                     <div class="col-md-9 register-right">
 
@@ -82,7 +85,7 @@
             </footer>
 
 
-        <!-- Modal -->
+ <!-- Admin Login Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -105,7 +108,48 @@
         </div>
 
         <div class="modal-footer">
-            <button class="btn btn-primary ">Register</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+</div>
+
+
+<!-- Registering an administrator Modal-->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Create Admin Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="./login.php" method="post">
+        <div class="modal-body"> 
+            <div class="form-group">
+                <label for="">Names *</label>
+                <input type="text" class="form-control" name="uname" placeholder="Your full name ... *" required/>
+            </div>        
+            <div class="form-group">
+                <label for="">Email *</label>
+                <input type="email" class="form-control" name="uname" placeholder="User email ... *" required/>
+            </div>
+            <div class="form-group">
+                <label for="">Password *</label>
+                <input type="password" class="form-control" name="passwrd" placeholder="Password ... *" required/>
+            </div>  
+            <!-- <div class="form-group">
+                <label for=""> <abbr title="Terms of Reference">ToR</abbr> </label>
+                <input type="file" class="form-control" name="passwrd" placeholder="Password ... *" required accept="application/pdf" />
+            </div>  -->       
+        </div>
+
+        <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             <button type="submit" class="btn btn-primary">Login</button>
         </div>
