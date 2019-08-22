@@ -18,7 +18,7 @@
                 <!-- Left Pane (Admin-Login) -->
                 <div class="row">
                     <div class="col-md-3 register-left">
-                        <img src="./moh_logo.jpg" alt=""/>
+                        <img src="./img/moh_logo.jpg" alt=""/>
                         <h3>Welcome</h3>
                         <p>You are only required to fill all these fields and submit your application!</p>
                         <i>If you're an administrator, press one of the buttons below!</i> <br> <br><br>

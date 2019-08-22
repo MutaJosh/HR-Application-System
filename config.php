@@ -11,10 +11,13 @@ $cv = $_POST['cv'];
 $req_letter = $_POST['req_letter'];
 $degree = $_POST['degree'];
 
-
 // Recording the submitted data into the database
 $sql1 = "INSERT INTO users (names, email, telephone, nid, user_type) VALUES ('$applicant_names', '$email', '$tel', '$nid', 'Applicant')";
-$sql2 = "INSERT INTO health_professional (request_letter, cv, degree, created_by, created_date) VALUES('$req_letter', '$cv', '$degree', '$applicant_names', NOW())";
+
+// get this user id by passing the nid
+// $userid
+
+$sql2 = "INSERT INTO health_professional (request_letter, user, cv, degree, created_by, created_date) VALUES('$req_letter', '$userid' '$cv', '$degree', '$applicant_names', NOW())";
 
 
 if ($conn->query($sql1) === TRUE && $conn->query($sql2) === TRUE) {
