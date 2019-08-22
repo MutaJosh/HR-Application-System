@@ -9,7 +9,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./css/main.css">
     <title>Job Request Tracking System</title>
 </head>
 <body>
@@ -34,7 +34,7 @@
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <h3 class="register-heading">Fill out to start your application!</h3>
 
-                                <form action="./config.php" method="POST">
+                                <form action="./submit_apply.php" method="POST">
 
                                     <div class="row register-form">                                  
                                         <div class="col-md-6">

@@ -23,7 +23,7 @@ $res = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
     <link rel="stylesheet" href="../css/main.css">
-    <title>Job Request Tracking System</title>
+    <title>Job Application Tracking System</title>
 </head>
 <body>
     
@@ -33,10 +33,10 @@ $res = mysqli_query($conn, $sql);
                     <div class="col-md-2 navdiv">
                         <img src="../img/moh_logo.jpg" alt="" class="logo_moh"/>
                         <h3>Menu</h3>
-                        <a href="#"> Applicants </a>
+                        <a href="#" class="active"> Applicants </a>
                         <a href="#"> Opportunities </a>
                         <a href="#"> Post an opportunity </a>
-                        <a href=""> Logout </a>
+                        <a href="../"> Logout </a>
                     </div>
 
                     <div class="col-md-10 menu">
@@ -65,17 +65,17 @@ $res = mysqli_query($conn, $sql);
 
                                         <tbody>
                                          <?php
-                                            $a = 1;
+                                            $counter = 1;
                                             while($users = mysqli_fetch_assoc($res)){                                                
                                                echo "<tr>";
-                                                    echo "<td>" . $a . "</td>";
+                                                    echo "<td>" . $counter . "</td>";
                                                     echo "<td>" . $users['names']. "</td>";
                                                     echo "<td>" . $users['email'] . "</td>";
                                                     echo "<td>" . $users['telephone'] . "</td>";
                                                     echo "<td>" . $users['NID'] . "</td>";
                                                 echo "</tr>";
 
-                                                $a++;
+                                                $counter++;
                                             }
                                         ?>
                                             </tbody>
