@@ -27,7 +27,6 @@ $sql2 = "INSERT INTO health_professional (request_letter, cv, degree, created_by
 
 if ($conn->query($sql1) === TRUE && $conn->query($sql2) === TRUE) {
     header("refresh:1;url=http://localhost/job_req_pro/confirmed_sub.php"); 
-    echo '<script type="text/javascript">alert("You successfully submitted you documents!");</script>';
 } else {
     echo "Error: " . $conn->error;
 } 
