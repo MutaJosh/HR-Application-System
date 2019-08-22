@@ -104,10 +104,9 @@ h3 {
     color: #495057;
 }
 
-.nav img{
+.logo_moh{
     vertical-align: middle;
     border-style: none;
-    width: 50%;
     height: 20%;
     margin: .8em;
     margin-bottom: 1em;
@@ -121,4 +120,13 @@ h3 {
 
 .display {
     margin-top: 10%;
+}
+
+.container {
+    border-bottom: 2px solid #3b979a;
+    padding-bottom: 1em;
+    margin-bottom: 0.8em;
+}
+.navdiv a {
+    margin-right: 2em;
 }

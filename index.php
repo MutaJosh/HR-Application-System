@@ -129,29 +129,30 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="./login.php" method="post">
+      <form action="./signup.php" method="post">
         <div class="modal-body"> 
             <div class="form-group">
-                <label for="">Names *</label>
-                <input type="text" class="form-control" name="uname" placeholder="Your full name ... *" required/>
+                <label for="">Health Facility *</label>
+                <input type="text" class="form-control" name="facility" placeholder="Which health facility do you belong to? *" required/>
             </div>        
             <div class="form-group">
                 <label for="">Email *</label>
-                <input type="email" class="form-control" name="uname" placeholder="User email ... *" required/>
+                <input type="email" class="form-control" name="fac_email" placeholder="User email ... *" required/>
             </div>
+            <div class="form-group">
+                <label for="">Telephone *</label>
+                <input type="text" class="form-control" name="fac_tel" placeholder="Your facility phone or yours! *" required/>
+            </div> 
             <div class="form-group">
                 <label for="">Password *</label>
                 <input type="password" class="form-control" name="passwrd" placeholder="Password ... *" required/>
             </div>  
-            <!-- <div class="form-group">
-                <label for=""> <abbr title="Terms of Reference">ToR</abbr> </label>
-                <input type="file" class="form-control" name="passwrd" placeholder="Password ... *" required accept="application/pdf" />
-            </div>  -->       
+       
         </div>
 
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary">Register</button>
         </div>
 
       </form>

@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `health_professional`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `health_professional` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` int(11) DEFAULT NULL,
   `request_leter` varchar(45) NOT NULL,
   `cv` varchar(45) NOT NULL,
@@ -37,9 +37,9 @@ CREATE TABLE `health_professional` (
   PRIMARY KEY (`id`),
   KEY `fk_health_professional_user_idx` (`user`),
   CONSTRAINT `fk_health_professional_user` FOREIGN KEY (`user`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='To store all request about health professional (e.g. Medical Doctors, Nurse, Pharmacists, ...)';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='To store all request about health professional (e.g. Medical Doctors, Nurse, Pharmacists, ...)';
 /*!40101 SET character_set_client = @saved_cs_client */;
-
+/* COLLATE=utf8mb4_0900_ai_ci */
 --
 -- Dumping data for table `health_professional`
 --
@@ -63,9 +63,9 @@ CREATE TABLE `health_professional_qualification` (
   KEY `fk_qualification_idx` (`qualification`),
   CONSTRAINT `fk_health_professional` FOREIGN KEY (`health_professional`) REFERENCES `health_professional` (`id`),
   CONSTRAINT `fk_qualification` FOREIGN KEY (`qualification`) REFERENCES `qualification` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
+/*  COLLATE=utf8mb4_0900_ai_ci */
 --
 -- Dumping data for table `health_professional_qualification`
 --
@@ -96,9 +96,9 @@ CREATE TABLE `opening_posting` (
   PRIMARY KEY (`id`),
   KEY `fk_opening_posting_user_idx` (`user`),
   CONSTRAINT `fk_opening_posting_user` FOREIGN KEY (`user`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
+/*  COLLATE=utf8mb4_0900_ai_ci */
 --
 -- Dumping data for table `opening_posting`
 --
@@ -122,9 +122,9 @@ CREATE TABLE `opening_posting_qualification` (
   KEY `fk_opq_qualification_idx` (`qualification`),
   CONSTRAINT `fk_opq_opening_posting` FOREIGN KEY (`opening_posting`) REFERENCES `opening_posting` (`id`),
   CONSTRAINT `fk_opq_qualification` FOREIGN KEY (`qualification`) REFERENCES `qualification` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
+/*  COLLATE=utf8mb4_0900_ai_ci */
 --
 -- Dumping data for table `opening_posting_qualification`
 --
@@ -146,9 +146,9 @@ CREATE TABLE `qualification` (
   `name` varchar(45) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
+/*  COLLATE=utf8mb4_0900_ai_ci */
 --
 -- Dumping data for table `qualification`
 --
@@ -166,15 +166,16 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `names` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `telephone` varchar(45) DEFAULT NULL,
   `doc_no` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
+/*  COLLATE=utf8mb4_0900_ai_ci */
 --
 -- Dumping data for table `users`
 --

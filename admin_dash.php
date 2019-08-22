@@ -1,3 +1,15 @@
+<?php
+
+require_once ('conn.php');
+
+$sql = "SELECT * FROM users WHERE user_type = 'Applicant' ";
+/* $sql_date = "SELECT created_date FROM health_professional,users WHERE health_professional.created_by = users.names"; */
+$res = mysqli_query($conn, $sql);
+/* $res_2 = mysqli_query($conn, $sql_date);*/
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,17 +31,13 @@
 <div class="container">
                 <!-- Left Pane (Admin-Login) -->
                 <div class="row">
-                    <div class="col-md-2 nav">
-                        <img src="./moh_logo.jpg" alt=""/>
+                    <div class="col-md-2 navdiv">
+                        <img src="./moh_logo.jpg" alt="" class="logo_moh"/>
                         <h3>Menu</h3>
                         <a href="#"> Applicants </a>
                         <a href="#"> Opportunities </a>
                         <a href="#"> Post an opportunity </a>
                         <a href=""> Logout </a>
-<!--                         <button type="button" class="btn btn-light" data-toggle="modal" data-target="#registerModal"> Applicants </button> <p>
-                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#loginModal"> Opportunities </button> <br>
-                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#loginModal"> Post an Opportunity </button> <p><p></p></p>
-                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#loginModal"> Logout </button>   -->        
                     </div>
 
                     <div class="col-md-10 menu">
@@ -45,102 +53,107 @@
                                     <div class="col-md-12 display">
                                         
                                         <table id="applicants" class="table table-striped table-bordered" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>Position</th>
-                                                    <th>Office</th>
-                                                    <th>Age</th>
-                                                    
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                    <td>Garrett Winters</td>
-                                                    <td>Accountant</td>
-                                                    <td>Tokyo</td>
-                                                    <td>63</td>
+                                        <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Telephone</th>
+                                                <th> <abbr title="National Identity Card No.">NID</abbr> </th>
+
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                         <?php
+                                            $a = 1;
+                                            while($users = mysqli_fetch_assoc($res)){
                                                 
-                                                </tr>
-                                                <tr>
-                                                    <td>Ashton Cox</td>
-                                                    <td>Junior Technical Author</td>
-                                                    <td>San Francisco</td>
-                                                    <td>66</td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                    <td>Cedric Kelly</td>
-                                                    <td>Senior Javascript Developer</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>22</td>
-                                                
-                                                </tr>
-                                                <tbody>
-                                                <tr>
-                                                    <td> Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                    <td>Winters</td>
-                                                    <td>Accountant</td>
-                                                    <td>Tokyo</td>
-                                                    <td>63</td>
-                                                
-                                                </tr>
-                                                <tr>
-                                                    <td>Cox</td>
-                                                    <td>Junior Technical Author</td>
-                                                    <td>San Francisco</td>
-                                                    <td>66</td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                    <td>Cedric Kelly</td>
-                                                    <td>Senior Javascript Developer</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>22</td>
-                                                
-                                                </tr>
-                                                <tbody>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                    <td>Garrett Winters</td>
-                                                    <td>Accountant</td>
-                                                    <td>Tokyo</td>
-                                                    <td>63</td>
-                                                
-                                                </tr>
-                                                <tr>
-                                                    <td>Ashton Cox</td>
-                                                    <td>Junior Technical Author</td>
-                                                    <td>San Francisco</td>
-                                                    <td>66</td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                    <td>Cedric Kelly</td>
-                                                    <td>Senior Javascript Developer</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>22</td>
-                                                
-                                                </tr>
+                                               echo "<tr>";
+                                                    echo "<td>" . $a . "</td>";
+                                                    echo "<td>" . $users['names']. "</td>";
+                                                    echo "<td>" . $users['email'] . "</td>";
+                                                    echo "<td>" . $users['telephone'] . "</td>";
+                                                    echo "<td>" . $users['NID'] . "</td>";
+                                                echo "</tr>";
+
+                                                $a++;
+                                            }
+                                        ?>
+
+
+
+         <!--   <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+            </tr>
+    
+            <tr>
+                <td>Charde Marshall</td>
+                <td>Regional Director</td>
+                <td>San Francisco</td>
+                <td>36</td>
+                <td>2008/10/16</td>
+
+            </tr>
+            <tr>
+                <td>Haley Kennedy</td>
+                <td>Senior Marketing Designer</td>
+                <td>London</td>
+                <td>43</td>
+                <td>2012/12/18</td>
+
+            </tr>
+            <tr>
+                <td>Tatyana Fitzpatrick</td>
+                <td>Regional Director</td>
+                <td>London</td>
+                <td>19</td>
+                <td>2010/03/17</td>
+
+            </tr>
+            <tr>
+                <td>Michael Silva</td>
+                <td>Marketing Designer</td>
+                <td>London</td>
+                <td>66</td>
+                <td>2012/11/27</td>
+ 
+            </tr>
+            <tr>
+                <td>Paul Byrd</td>
+                <td>Chief Financial Officer (CFO)</td>
+                <td>New York</td>
+                <td>64</td>
+                <td>2010/06/09</td>
+         
+            </tr>
+            <tr>
+                <td>Gloria Little</td>
+                <td>Systems Administrator</td>
+                <td>New York</td>
+                <td>59</td>
+                <td>2009/04/10</td>
+
+            </tr>
+            <tr>
+                <td>Bradley Greer</td>
+                <td>Software Engineer</td>
+                <td>London</td>
+                <td>41</td>
+                <td>2012/10/13</td>
+   
+            </tr>
+            <tr>
+                <td>Dai Rios</td>
+                <td>Personnel Lead</td>
+                <td>Edinburgh</td>
+                <td>35</td>
+                <td>2012/09/26</td>
+           </tr> -->
                                             </tbody>
                                         </table>
                                     </div>
