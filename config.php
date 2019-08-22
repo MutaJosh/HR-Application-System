@@ -15,9 +15,9 @@ $degree = $_POST['degree'];
 $sql1 = "INSERT INTO users (names, email, telephone, nid, user_type) VALUES ('$applicant_names', '$email', '$tel', '$nid', 'Applicant')";
 
 // get this user id by passing the nid
-// $userid
-
-$sql2 = "INSERT INTO health_professional (request_letter, user, cv, degree, created_by, created_date) VALUES('$req_letter', '$userid' '$cv', '$degree', '$applicant_names', NOW())";
+$last = "SELECT LAST_INSERT_ID()";
+$user_id = mysqli_query($conn, $last);
+$sql2 = "INSERT INTO health_professional (request_letter, user, cv, degree, created_by, created_date) VALUES('$req_letter', '$user_id' '$cv', '$degree', '$applicant_names', NOW())";
 
 
 if ($conn->query($sql1) === TRUE && $conn->query($sql2) === TRUE) {

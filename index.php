@@ -95,7 +95,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="./login.php" method="post">
+      <form action="./admin/login.php" method="post">
         <div class="modal-body">         
             <div class="form-group">
                 <label for="">Username</label>

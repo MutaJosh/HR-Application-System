@@ -1,6 +1,5 @@
 <?php
-SESSION_START();
-require_once ('conn.php');
+require_once ('../inc/conn.php');
 
 $sql = "SELECT * FROM users WHERE user_type = 'Applicant' ";
 /* $sql_date = "SELECT created_date FROM health_professional WHERE health_professional.created_by = users.names"; */
@@ -23,7 +22,7 @@ $res = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="../css/main.css">
     <title>Job Request Tracking System</title>
 </head>
 <body>
@@ -32,7 +31,7 @@ $res = mysqli_query($conn, $sql);
                 <!-- Left Pane (Admin-Login) -->
                 <div class="row">
                     <div class="col-md-2 navdiv">
-                        <img src="./img/moh_logo.jpg" alt="" class="logo_moh"/>
+                        <img src="../img/moh_logo.jpg" alt="" class="logo_moh"/>
                         <h3>Menu</h3>
                         <a href="#"> Applicants </a>
                         <a href="#"> Opportunities </a>
