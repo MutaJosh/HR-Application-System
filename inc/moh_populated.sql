@@ -16,7 +16,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `moh`
@@ -40,7 +40,7 @@ CREATE TABLE `health_professional` (
   `updated_date` datetime DEFAULT NULL,
   `voided_by` varchar(45) DEFAULT NULL,
   `voided_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='To store all request about health professional (e.g. Medical Doctors, Nurse, Pharmacists, ...)';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='To store all request about health professional (e.g. Medical Doctors, Nurse, Pharmacists, ...)';
 
 --
 -- Dumping data for table `health_professional`
@@ -60,7 +60,7 @@ INSERT INTO `health_professional` (`id`, `user`, `request_letter`, `cv`, `degree
 CREATE TABLE `health_professional_qualification` (
   `health_professional` int(11) NOT NULL,
   `qualification` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -79,7 +79,7 @@ CREATE TABLE `opening_posting` (
   `updated_date` datetime DEFAULT NULL,
   `voided_by` varchar(45) DEFAULT NULL,
   `voided_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -90,7 +90,7 @@ CREATE TABLE `opening_posting` (
 CREATE TABLE `opening_posting_qualification` (
   `opening_posting` int(11) NOT NULL,
   `qualification` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -102,7 +102,7 @@ CREATE TABLE `qualification` (
   `id` int(11) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -118,7 +118,7 @@ CREATE TABLE `users` (
   `NID` varchar(16) DEFAULT NULL,
   `u_password` varchar(45) DEFAULT NULL,
   `user_type` varchar(20) DEFAULT NULL COMMENT 'This is to differentiate between applicants and staff!'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`

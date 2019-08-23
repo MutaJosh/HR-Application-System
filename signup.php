@@ -3,11 +3,12 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "mysql";
 $dbname = "moh";
+$port = "3307";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $username, $password, $dbname, $port);
 
 // Check connection
 if ($conn->connect_error) {
@@ -22,7 +23,7 @@ $passwd = $_POST['passwrd'];
 $sql = "INSERT INTO users (names, email, telephone, u_password, user_type) VALUES('$facility_name', '$fac_email', '$fac_tel', '$passwd', 'Staff')";
 
 if ($conn->query($sql) === TRUE) {
-    header("refresh:1;url=http://localhost/job_req_pro/"); 
+    header("refresh:1;url=http://localhost/Job_Request_Tracker/"); 
     echo '<script type="text/javascript">alert("You successfully created an account!");</script>';
 } else {
     echo "Error: " . $conn->error;
