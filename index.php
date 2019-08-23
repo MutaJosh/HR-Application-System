@@ -51,6 +51,14 @@
                                             <div class="form-group">
                                                 <input type="number" class="form-control" name="nid" placeholder="National ID ..." required/>
                                             </div>
+                                            <div class="form-group">
+                                                <select class="form-control" name="professional">
+                                                    <option value="">Select Professional</option>
+                                                    <option value="1">Nurse</option>
+                                                    <option value="2">Medical Doctor</option>
+                                                    <option value="3">Pharmacist</option>
+                                                </select>
+                                            </div>
                                         
                                         </div>
                                         <div class="col-md-6">
