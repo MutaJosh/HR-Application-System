@@ -1,6 +1,8 @@
 <?php
 require './inc/conn.php';
 
+if (isset($_POST["submit"]))
+{
 
 $applicant_names = $_POST['applicant'];
 $tel = $_POST['telephone'];
@@ -8,9 +10,27 @@ $email = $_POST['email'];
 $nid = $_POST['nid'];
 $professional = $_POST['professional'];
 
-$cv = $_POST['cv'];
-$req_letter = $_POST['req_letter'];
-$degree = $_POST['degree'];
+/* Store uploaded files in the database! */
+    # file name
+    $file_name_cv = $_FILES["cv"]["name"];
+    $file_name_req = $_FILES["req_letter"]["name"];
+    $file_name_degree = $_FILES["degree"]["name"];
+  
+    # temporary file name to store file
+    $tmp_name_cv = $_FILES["cv"]["tmp_name"];
+    $tmp_name_req = $_FILES["req_letter"]["tmp_name"];
+    $tmp_name_degree = $_FILES["degree"]["tmp_name"];
+
+    # upload directory path
+    $uploads_dir1 = 'uploaded_files/' . $applicant_names . '__' . $file_name_cv;
+    $uploads_dir2 = 'uploaded_files/' . $applicant_names . '__' . $file_name_req;
+    $uploads_dir3 = 'uploaded_files/' . $applicant_names . '__' . $file_name_degree;
+
+    #To move the uploaded file to specific location
+    move_uploaded_file($tmp_name_cv, $uploads_dir1);
+    move_uploaded_file($tmp_name_req, $uploads_dir2);
+    move_uploaded_file($tmp_name_degree, $uploads_dir3);
+
 
 // Recording the submitted data into the database
 $sql1 = "INSERT INTO users (names, email, telephone, nid, user_type) VALUES ('$applicant_names', '$email', '$tel', '$nid', 'Applicant')";
@@ -37,7 +57,7 @@ if($conn->query($sql1) === TRUE) {
                     }
                 }
 
-                header("refresh:1;url=http://localhost/Job_Request_Tracker/confirmed_sub.php"); 
+                header("refresh:10;url=http://localhost/Job_Request_Tracker/confirmed_sub.php"); 
             } else {
                 echo "Error: " . $conn->error;
             }
@@ -48,6 +68,8 @@ if($conn->query($sql1) === TRUE) {
     }
 } else {
     echo "Error: " . $conn->error;
+}
+
 }
 
 ?>

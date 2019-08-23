@@ -75,7 +75,7 @@
                                                 <input type="file" class="form-control" name="degree" placeholder="Your Degree *" data-toggle="tooltip" data-placement="top" title="Your Degree" accept="application/pdf" required/>
                                             </div>
 
-                                            <input type="submit" class="btnRegister" value="Submit"/>
+                                            <input type="submit" class="btnRegister" name="submit" value="Submit"/>
                                         </div>               
                                     </div>
 

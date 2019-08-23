@@ -1,7 +1,11 @@
 <?php
 require_once ('../inc/conn.php');
 
-$sql = "SELECT * FROM users WHERE user_type = 'Applicant' ";
+$sql = "SELECT u.id, u.names, u.email, u.telephone, u.NID, h.created_date
+        FROM users AS u, health_professional AS h
+        WHERE u.id = h.user AND user_type = 'Applicant' 
+        ORDER BY h.created_date DESC ";
+
 $res = mysqli_query($conn, $sql);
 
 
@@ -57,7 +61,7 @@ $res = mysqli_query($conn, $sql);
                                                 <th>Email</th>
                                                 <th>Telephone</th>
                                                 <th> <abbr title="National Identity Card No.">NID</abbr> </th>
-
+                                                <th>Application Date</th>
                                             </tr>
                                         </thead>
 
@@ -71,6 +75,7 @@ $res = mysqli_query($conn, $sql);
                                                     echo "<td>" . $users['email'] . "</td>";
                                                     echo "<td>" . $users['telephone'] . "</td>";
                                                     echo "<td>" . $users['NID'] . "</td>";
+                                                    echo "<td>" . $users['created_date'] . "</td>";
                                                 echo "</tr>";
 
                                                 $counter++;
