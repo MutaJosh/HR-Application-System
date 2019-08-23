@@ -2,12 +2,11 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "mysql";
+$password = "";
 $dbname = "moh";
-$port = "3307";
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname, $port);
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
 /* $conn = new mysqli($servername, $username, $password, $dbname);
  */

@@ -1,10 +1,6 @@
 <?php
 require_once ('../inc/conn.php');
 
-$sql = "SELECT * FROM users WHERE user_type = 'Applicant' ";
-$res = mysqli_query($conn, $sql);
-
-
 ?>
 
 <!DOCTYPE html>
@@ -31,9 +27,9 @@ $res = mysqli_query($conn, $sql);
                     <div class="col-md-2 navdiv">
                         <img src="../img/moh_logo.jpg" alt="" class="logo_moh"/>
                         <h3>Menu</h3>
-                        <a href="#" class="active"> Applicants </a>
+                        <a href="./" class="active"> Applicants </a>
                         <a href="#"> Opportunities </a>
-                        <a href="./post_opp.php"> Post an opportunity </a>
+                        <a href="#"> Post an opportunity </a>
                         <a href="../"> Logout </a>
                     </div>
 
@@ -48,36 +44,35 @@ $res = mysqli_query($conn, $sql);
                                
                                 <div class="row">
                                     <div class="col-md-12 display">
-                                        
-                                        <table id="applicants" class="table table-striped table-bordered" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Telephone</th>
-                                                <th> <abbr title="National Identity Card No.">NID</abbr> </th>
+                                       
+                                    <form action="./submit_apply.php" method="POST">
 
-                                            </tr>
-                                        </thead>
+<div class="row register-form">                                  
+    <div class="col-md-10">
+        <div class="form-group">
+            <label for="">Opportunity Name</label>
+            <input type="text" class="form-control" name="opp" placeholder="Opportunity" required/>
+        </div>
+        <div class="form-group">
+            <label for="">Qualifications</label>
+            <input type="text" name="quo" class="form-control" placeholder="Qualifications ..." required/>
+        </div>
+        <div class="form-group">
+            <input type="file" class="form-control" name="tor" required/>
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" name="nid" placeholder="National ID ..." required/>
+        </div>
+    
+    </div>
 
-                                        <tbody>
-                                         <?php
-                                            $counter = 1;
-                                            while($users = mysqli_fetch_assoc($res)){                                                
-                                               echo "<tr>";
-                                                    echo "<td>" . $counter . "</td>";
-                                                    echo "<td>" . $users['names']. "</td>";
-                                                    echo "<td>" . $users['email'] . "</td>";
-                                                    echo "<td>" . $users['telephone'] . "</td>";
-                                                    echo "<td>" . $users['NID'] . "</td>";
-                                                echo "</tr>";
 
-                                                $counter++;
-                                            }
-                                        ?>
-                                            </tbody>
-                                        </table>
+        <input type="submit" class="btnRegister" value="Submit"/>
+                  
+</div>
+
+</form>
+
                                     </div>
                                 </div>
                             </div>

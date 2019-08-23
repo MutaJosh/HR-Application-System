@@ -1,10 +1,6 @@
 <?php
 require_once ('../inc/conn.php');
 
-$sql = "SELECT * FROM users WHERE user_type = 'Applicant' ";
-$res = mysqli_query($conn, $sql);
-
-
 ?>
 
 <!DOCTYPE html>
@@ -48,36 +44,7 @@ $res = mysqli_query($conn, $sql);
                                
                                 <div class="row">
                                     <div class="col-md-12 display">
-                                        
-                                        <table id="applicants" class="table table-striped table-bordered" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Telephone</th>
-                                                <th> <abbr title="National Identity Card No.">NID</abbr> </th>
-
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                         <?php
-                                            $counter = 1;
-                                            while($users = mysqli_fetch_assoc($res)){                                                
-                                               echo "<tr>";
-                                                    echo "<td>" . $counter . "</td>";
-                                                    echo "<td>" . $users['names']. "</td>";
-                                                    echo "<td>" . $users['email'] . "</td>";
-                                                    echo "<td>" . $users['telephone'] . "</td>";
-                                                    echo "<td>" . $users['NID'] . "</td>";
-                                                echo "</tr>";
-
-                                                $counter++;
-                                            }
-                                        ?>
-                                            </tbody>
-                                        </table>
+                                       
                                     </div>
                                 </div>
                             </div>
