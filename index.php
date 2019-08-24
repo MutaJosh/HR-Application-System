@@ -149,7 +149,7 @@
             </div>
             <div class="form-group">
                 <label for="">Telephone *</label>
-                <input type="text" class="form-control" name="fac_tel" placeholder="Your facility phone or yours! *" required/>
+                <input type="text" maxlength="10" class="form-control" name="fac_tel" placeholder="Your facility phone or yours! *" required/>
             </div> 
             <div class="form-group">
                 <label for="">Password *</label>

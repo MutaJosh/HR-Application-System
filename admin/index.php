@@ -1,7 +1,7 @@
 <?php
 require_once ('../inc/conn.php');
 
-$sql = "SELECT u.id, u.names, u.email, u.telephone, u.NID, h.created_date
+$sql = "SELECT u.id, u.names, u.email, u.telephone, u.NID, h.created_date, h.cv, h.request_letter, h.degree
         FROM users AS u, health_professional AS h
         WHERE u.id = h.user AND user_type = 'Applicant' 
         ORDER BY h.created_date DESC ";
@@ -69,17 +69,24 @@ $res = mysqli_query($conn, $sql);
                                          <?php
                                             $counter = 1;
                                             while($users = mysqli_fetch_assoc($res)){   
-                                                $file1 = 'https://about.me/josuem';                                             
-                                               echo "<tr>";
+                                                $file1 = 'https://about.me/josuem';  
+
+                                                $id_cv = $users['names'];  
+                                                $id_req = $users['id'];
+                                                $id_d = $users['id'];  
+                                                
+                                                $my_d = $users['names'] . '__' . $users['degree'];
+                                               
+                                                echo "<tr>";
                                                     echo "<td>" . $counter . "</td>";
                                                     echo "<td>" . $users['names']. "</td>";
                                                     echo "<td>" . $users['email'] . "</td>";
                                                     echo "<td>" . $users['telephone'] . "</td>";
                                                     echo "<td>" . $users['created_date'] . "</td>";
                                                     echo "<td>" ?> 
-                                                        <a href="http://about.me/josuem">CV</a>
-                                                        <a href="http://about.me/josuem">Letter</a>
-                                                        <a href="http://about.me/josuem">Degree</a>
+                                                        <a href="../inc/download.php?id=<?php $id_cv ?> " target="_blank">CV</a>
+                                                        <a href="../inc/download.php?id=<?php $id_req ?> " target="_blank">Letter</a>
+                                                        <a href="../uploads/<?php echo $my_d ?>" target="_blank">Degree</a>
                                                     <?php
                                                      "</td>";
                                                 echo "</tr>";
