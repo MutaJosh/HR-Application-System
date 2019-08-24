@@ -57,7 +57,28 @@ if($conn->query($sql1) === TRUE) {
                             }
                         }
 
-                        header("refresh:1;url=http://localhost/Job_Request_Tracker/confirmed_sub.php"); 
+                        header("refresh:0;url=http://localhost/Job_Request_Tracker/confirmed_sub.php"); 
+
+                        $mes = "
+                        Hi there,
+                        
+                        Thank you for applying!
+                        We're be right back to you once there is an opportunity!
+        
+                        Regards,       
+                        
+                        
+                        -----------------------
+                        Ministry Of Health 
+                        Kigali - Rwanda";
+        
+                        $sub = "Successful Application Submission - MOH!";       
+                        $res = mail($email, $sub, $mes);
+                        if ($res)
+                            echo "Sent!";
+                        else
+                            echo "Failed!";
+
                     } else {
                         echo "Error: " . $conn->error;
                     }
