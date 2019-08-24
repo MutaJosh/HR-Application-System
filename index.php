@@ -10,7 +10,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="./css/main.css">
-    <title>Job Request Tracking System</title>
+    <title>Job Request Tracking System - Home</title>
 </head>
 <body>
     
@@ -34,7 +34,7 @@
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <h3 class="register-heading">Fill out to start your application!</h3>
 
-                                <form action="./submit_apply.php" method="POST">
+                                <form action="./submit_apply.php" method="POST" enctype="multipart/form-data">
 
                                     <div class="row register-form">                                  
                                         <div class="col-md-6">
@@ -43,13 +43,13 @@
                                                 <input type="text" class="form-control" name="applicant" placeholder="Full Name ..." required/>
                                             </div>
                                             <div class="form-group">
-                                                <input type="number" maxlength="10" name="telephone" class="form-control" placeholder="Telephone ..." required/>
+                                                <input type="text" maxlength="10" name="telephone" class="form-control" placeholder="Telephone ..." required/>
                                             </div>
                                             <div class="form-group">
                                                 <input type="email" class="form-control" name="email" placeholder="Email ... " required/>
                                             </div>
                                             <div class="form-group">
-                                                <input type="number" class="form-control" name="nid" placeholder="National ID ..." required/>
+                                                <input type="text" maxlength="16" class="form-control" name="nid" placeholder="National ID ..." required/>
                                             </div>
                                             <div class="form-group">
                                                 <select class="form-control" name="professional">
@@ -64,15 +64,15 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="">Your Request Letter</label>
-                                                <input type="file" class="form-control" name="req_letter" placeholder="Request Letter *" data-toggle="tooltip" data-placement="top" title="Request Letter" accept="application/pdf" required/>
+                                                <input type="File" class="form-control" name="req_letter" placeholder="Request Letter *" data-toggle="tooltip" data-placement="top" title="Request Letter" accept="application/pdf" required/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Your CV</label>
-                                                <input type="file" class="form-control" name="cv" placeholder="Your CV *" data-toggle="tooltip" data-placement="top" title="Your CV" accept="application/pdf" required/>
+                                                <input type="File" class="form-control" name="cv" placeholder="Your CV *" data-toggle="tooltip" data-placement="top" title="Your CV" accept="application/pdf" required/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Your Degree</label>
-                                                <input type="file" class="form-control" name="degree" placeholder="Your Degree *" data-toggle="tooltip" data-placement="top" title="Your Degree" accept="application/pdf" required/>
+                                                <input type="File" class="form-control" name="degree" placeholder="Your Degree *" data-toggle="tooltip" data-placement="top" title="Your Degree" accept="application/pdf" required/>
                                             </div>
 
                                             <input type="submit" class="btnRegister" name="submit" value="Submit"/>

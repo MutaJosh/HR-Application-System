@@ -35,8 +35,8 @@ $res = mysqli_query($conn, $sql);
                     <div class="col-md-2 navdiv">
                         <img src="../img/moh_logo.jpg" alt="" class="logo_moh"/>
                         <h3>Menu</h3>
-                        <a href="#" class="active"> Applicants </a>
-                        <a href="#"> Opportunities </a>
+                        <a href="./" class="active"> Applicants </a>
+                        <a href="./opp.php"> Opportunities </a>
                         <a href="./post_opp.php"> Post an opportunity </a>
                         <a href="../"> Logout </a>
                     </div>
