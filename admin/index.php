@@ -69,13 +69,10 @@ $res = mysqli_query($conn, $sql);
                                          <?php
                                             $counter = 1;
                                             while($users = mysqli_fetch_assoc($res)){   
-                                                $file1 = 'https://about.me/josuem';  
 
-                                                $id_cv = $users['names'];  
-                                                $id_req = $users['id'];
-                                                $id_d = $users['id'];  
-                                                
-                                                $my_d = $users['names'] . '__' . $users['degree'];
+                                                $app_cv = $users['names'] . '__' . $users['cv'];
+                                                $app_request = $users['names'] . '__' . $users['request_letter'];
+                                                $app_degree = $users['names'] . '__' . $users['degree'];
                                                
                                                 echo "<tr>";
                                                     echo "<td>" . $counter . "</td>";
@@ -84,13 +81,14 @@ $res = mysqli_query($conn, $sql);
                                                     echo "<td>" . $users['telephone'] . "</td>";
                                                     echo "<td>" . $users['created_date'] . "</td>";
                                                     echo "<td>" ?> 
-                                                        <a href="../inc/download.php?id=<?php $id_cv ?> " target="_blank">CV</a>
-                                                        <a href="../inc/download.php?id=<?php $id_req ?> " target="_blank">Letter</a>
-                                                        <a href="../uploads/<?php echo $my_d ?>" target="_blank">Degree</a>
+                                                        <a href="../uploads/<?php echo $app_cv ?>" target="_blank">CV</a> |
+                                                        <a href="../uploads/<?php echo $app_request ?>" target="_blank">Letter</a> |
+                                                        <a href="../uploads/<?php echo $app_degree ?>" target="_blank">Degree</a>
                                                     <?php
                                                      "</td>";
                                                 echo "</tr>";
-
+                                                
+                                                /* Counter for all the applicants! */
                                                 $counter++;
                                             }
                                         ?>
