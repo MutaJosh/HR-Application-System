@@ -60,22 +60,28 @@ $res = mysqli_query($conn, $sql);
                                                 <th>Name</th>
                                                 <th>Email</th>
                                                 <th>Telephone</th>
-                                                <th> <abbr title="National Identity Card No.">NID</abbr> </th>
                                                 <th>Application Date</th>
+                                                <th>Documents</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
                                          <?php
                                             $counter = 1;
-                                            while($users = mysqli_fetch_assoc($res)){                                                
+                                            while($users = mysqli_fetch_assoc($res)){   
+                                                $file1 = 'https://about.me/josuem';                                             
                                                echo "<tr>";
                                                     echo "<td>" . $counter . "</td>";
                                                     echo "<td>" . $users['names']. "</td>";
                                                     echo "<td>" . $users['email'] . "</td>";
                                                     echo "<td>" . $users['telephone'] . "</td>";
-                                                    echo "<td>" . $users['NID'] . "</td>";
                                                     echo "<td>" . $users['created_date'] . "</td>";
+                                                    echo "<td>" ?> 
+                                                        <a href="http://about.me/josuem">CV</a>
+                                                        <a href="http://about.me/josuem">Letter</a>
+                                                        <a href="http://about.me/josuem">Degree</a>
+                                                    <?php
+                                                     "</td>";
                                                 echo "</tr>";
 
                                                 $counter++;
