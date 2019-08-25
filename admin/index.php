@@ -24,8 +24,10 @@ $res = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+
     <link rel="stylesheet" href="../css/main.css">
-    <title>Job Application Tracking System</title>
+    <title>Job Application Tracking System - Administrator</title>
 </head>
 <body>
     
@@ -46,7 +48,7 @@ $res = mysqli_query($conn, $sql);
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row">
-                                        <h3 class="register-heading">Administrator Dashboard!</h3>
+                                        <h3 class="register-heading">Administrator Dashboard - Job Application Tracking System!</h3>
 
                                     </div>
                                

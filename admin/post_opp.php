@@ -17,7 +17,7 @@ require_once ('../inc/conn.php');
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
     <link rel="stylesheet" href="../css/main.css">
-    <title>Job Application Tracking System</title>
+    <title>Job Application Tracking System - Post An Opportunity</title>
 </head>
 <body>
     
@@ -34,11 +34,10 @@ require_once ('../inc/conn.php');
                     </div>
 
                     <div class="col-md-10 menu">
-                        <!-- Employee -->
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row">
-                                        <h3 class="register-heading">Administrator Dashboard!</h3>
+                                        <h3 class="register-heading">You're about to record a new available post!</h3>
 
                                     </div>
                                
@@ -47,31 +46,24 @@ require_once ('../inc/conn.php');
                                        
                                     <form action="./submit_apply.php" method="POST">
 
-<div class="row register-form">                                  
-    <div class="col-md-10">
-        <div class="form-group">
-            <label for="">Opportunity Name</label>
-            <input type="text" class="form-control" name="opp" placeholder="Opportunity" required/>
-        </div>
-        <div class="form-group">
-            <label for="">Qualifications</label>
-            <input type="text" name="quo" class="form-control" placeholder="Qualifications ..." required/>
-        </div>
-        <div class="form-group">
-            <input type="file" class="form-control" name="tor" required/>
-        </div>
-        <div class="form-group">
-            <input type="number" class="form-control" name="nid" placeholder="National ID ..." required/>
-        </div>
-    
-    </div>
-
-
-        <input type="submit" class="btnRegister" value="Submit"/>
-                  
-</div>
-
-</form>
+                                        <div class="row register-form">                                  
+                                            <div class="col-md-10">
+                                                <div class="form-group">
+                                                    <label for="">Opportunity Name</label>
+                                                    <input type="text" class="form-control" name="opp" placeholder="Opportunity" required/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Qualifications</label>
+                                                    <input type="text" name="quo" class="form-control" placeholder="Qualifications ..." required/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Terms of Reference</label>
+                                                    <input type="file" class="form-control" name="tor" required/>
+                                                </div>
+                                            </div>
+                                                <input type="submit" class="btnRegister" value="Submit"/>                  
+                                            </div>
+                                        </form>
 
                                     </div>
                                 </div>

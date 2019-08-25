@@ -16,8 +16,10 @@ require_once ('../inc/conn.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
-    <link rel="stylesheet" href="../css/main.css">
-    <title>Job Application Tracking System</title>
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+
+   <link rel="stylesheet" href="../css/main.css">
+    <title>Job Application Tracking System - Opportunities</title>
 </head>
 <body>
     
@@ -27,8 +29,8 @@ require_once ('../inc/conn.php');
                     <div class="col-md-2 navdiv">
                         <img src="../img/moh_logo.jpg" alt="" class="logo_moh"/>
                         <h3>Menu</h3>
-                        <a href="#" class="active"> Applicants </a>
-                        <a href="#"> Opportunities </a>
+                        <a href="./"> Applicants </a>
+                        <a href="./opp.php"> Opportunities </a>
                         <a href="./post_opp.php"> Post an opportunity </a>
                         <a href="../"> Logout </a>
                     </div>
@@ -38,7 +40,7 @@ require_once ('../inc/conn.php');
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row">
-                                        <h3 class="register-heading">Administrator Dashboard!</h3>
+                                        <h3 class="register-heading">Available Opportunities!</h3>
 
                                     </div>
                                
