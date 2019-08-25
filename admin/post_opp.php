@@ -22,7 +22,6 @@ require_once ('../inc/conn.php');
 <body>
     
 <div class="container">
-                <!-- Left Pane (Admin-Login) -->
                 <div class="row">
                     <div class="col-md-2 navdiv">
                         <img src="../img/moh_logo.jpg" alt="" class="logo_moh"/>

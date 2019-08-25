@@ -1,4 +1,11 @@
 <?php
+SESSION_START();
+
+/* Not allowing any person to access admin-page */
+    if (!isset($_SESSION['user'])) {
+        header("Location: ../");
+    }
+
 require_once ('../inc/conn.php');
 
 $sql = "SELECT u.id, u.names, u.email, u.telephone, u.NID, h.created_date, h.cv, h.request_letter, h.degree
@@ -7,7 +14,6 @@ $sql = "SELECT u.id, u.names, u.email, u.telephone, u.NID, h.created_date, h.cv,
         ORDER BY h.created_date DESC ";
 
 $res = mysqli_query($conn, $sql);
-
 
 ?>
 
@@ -40,7 +46,7 @@ $res = mysqli_query($conn, $sql);
                         <a href="./" class="active"> Applicants </a>
                         <a href="./opp.php"> Opportunities </a>
                         <a href="./post_opp.php"> Post an opportunity </a>
-                        <a href="../"> Logout </a>
+                        <a href="./logout.php"> Logout </a>
                     </div>
 
                     <div class="col-md-10 menu">

@@ -108,8 +108,8 @@
       <form action="./admin/login.php" method="post">
         <div class="modal-body">         
             <div class="form-group">
-                <label for="">Username</label>
-                <input type="text" class="form-control" name="uname" placeholder="Username ... *" required/>
+                <label for="">Email</label>
+                <input type="email" class="form-control" name="email" placeholder="Health Facility Email ... *" required/>
             </div>
             <div class="form-group">
                 <label for="">Password</label>
@@ -119,7 +119,7 @@
 
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary" name="submit">Login</button>
         </div>
 
       </form>
