@@ -1,6 +1,12 @@
 <?php
 require_once ('../inc/conn.php');
 
+
+$sql = "SELECT o.id, o.created_by, o.tor, o.start_date, o.created_date, q.name, oq.qualification, oq.opening_posting FROM opening_posting AS o, qualification AS q, opening_posting_qualification AS oq
+WHERE oq.opening_posting=o.id";
+
+$results = mysqli_query($conn, $sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -40,13 +46,47 @@ require_once ('../inc/conn.php');
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row">
-                                        <h3 class="register-heading">Available Opportunities!</h3>
+                                        <h3 class="register-heading">Available Opportunities - Job Application Tracking System!</h3>
 
                                     </div>
                                
                                 <div class="row">
-                                    <div class="col-md-12 display">
-                                       
+                                    <div class="col-md-12 display">                                      
+                                    
+                                        <table id="applicants" class="table table-striped table-bordered" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Opportunity</th>
+                                                    <th>Health Facility</th>
+                                                    <th>Start Date</th>
+                                                    <th> <abbr title="Terms of Reference">TOR</abbr></th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            <?php
+                                                $counter = 1;
+                                                while($row = mysqli_fetch_assoc($results)) {   
+                                                
+                                                    echo "<tr>";
+                                                        echo "<td>" . $counter . "</td>";
+                                                        echo "<td>" . $row['name']. "</td>";
+                                                        echo "<td>" . $row['created_by'] . "</td>";
+                                                        echo "<td>" . $row['start_date'] . "</td>";
+                                                        echo "<td>" ?> 
+                                                            <a href="../TOR/<?php echo $row['created_by']. '__'. $row['tor'] ?>" target="_blank">Document</a> 
+                                                        <?php
+                                                        "</td>";
+                                                    echo "</tr>";
+                                                    
+                                                    /* Counter for all the applicants! */
+                                                    $counter++;
+                                                }
+                                            ?>
+                                                </tbody>
+                                            </table>
+
                                     </div>
                                 </div>
                             </div>
