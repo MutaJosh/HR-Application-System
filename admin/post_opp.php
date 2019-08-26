@@ -16,6 +16,8 @@ require_once ('../inc/conn.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+
     <link rel="stylesheet" href="../css/main.css">
     <title>Job Application Tracking System - Post An Opportunity</title>
 </head>

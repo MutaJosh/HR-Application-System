@@ -51,7 +51,7 @@ if($conn->query($sql1) === TRUE) {
                                 $hpid = $row["id"];
                                 $sql5 = "INSERT INTO health_professional_qualification (health_professional,qualification) VALUES ('$hpid', '$professional')";
                                 if($conn->query($sql5) === FALSE) {
-                                    echo "Error: " . $conn->error;
+                                    echo "Something went wrong!";
                                 }
                                 break;
                             }
