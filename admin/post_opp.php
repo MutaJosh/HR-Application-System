@@ -1,5 +1,9 @@
 <?php
+
+SESSION_START();
+
 require_once ('../inc/conn.php');
+
 
 ?>
 
@@ -38,31 +42,34 @@ require_once ('../inc/conn.php');
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="row">
-                                        <h3 class="register-heading">You're about to record a new available post!</h3>
-
+                                        <h3 class="register-heading">You're about to record a new available post in <?php echo $_SESSION['user']; ?>!</h3>
                                     </div>
                                
                                 <div class="row">
                                     <div class="col-md-12 display">
                                        
-                                    <form action="./submit_apply.php" method="POST">
+                                    <form action="./post.php" method="POST" enctype="multipart/form-data">
 
                                         <div class="row register-form">                                  
-                                            <div class="col-md-10">
+                                            <div class="col-md-10"> <br>
                                                 <div class="form-group">
-                                                    <label for="">Opportunity Name</label>
-                                                    <input type="text" class="form-control" name="opp" placeholder="Opportunity" required/>
+                                                    <label for="">Which post is available in <?php echo $_SESSION['user']; ?>?</label>
+                                                    <select class="form-control" name="professional">
+                                                        <option value="">Select Professional</option>
+                                                        <option value="1">Nurse</option>
+                                                        <option value="2">Pharmacist</option>
+                                                        <option value="3">Medical Doctor</option>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="">Qualifications</label>
-                                                    <input type="text" name="quo" class="form-control" placeholder="Qualifications ..." required/>
-                                                </div>
+                                                    <label for="">Start Date</label>
+                                                    <input type="datetime-local" class="form-control" name="start_date" id=""> <br>
                                                 <div class="form-group">
                                                     <label for="">Terms of Reference</label>
-                                                    <input type="file" class="form-control" name="tor" required/>
+                                                    <input type="File" class="form-control" name="tor" required/>
                                                 </div>
                                             </div>
-                                                <input type="submit" class="btnRegister" value="Submit"/>                  
+                                                <input type="submit" class="btnRegister" name="submit" value="Submit"/>                  
                                             </div>
                                         </form>
 
@@ -80,10 +87,15 @@ require_once ('../inc/conn.php');
                  <p>© 2019 | <a href="http://www.moh.gov.rw/index.php?id=188" target="_blank">Ministry of Health</a> - Rwanda</p>
             </footer>
 
-<script>
+<script type="text/javascript">
     $(document).ready(function() {
         $('#applicants').DataTable();
     } );
+
+/*     $(function () {
+        $('#datetimepicker').datetimepicker('show');
+    }); */
+
 </script>
 
 

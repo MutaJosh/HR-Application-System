@@ -57,8 +57,8 @@
                                                 <select class="form-control" name="professional">
                                                     <option value="">Select Professional</option>
                                                     <option value="1">Nurse</option>
-                                                    <option value="2">Medical Doctor</option>
-                                                    <option value="3">Pharmacist</option>
+                                                    <option value="2">Pharmacist</option>
+                                                    <option value="3">Medical Doctor</option>
                                                 </select>
                                             </div>
                                         

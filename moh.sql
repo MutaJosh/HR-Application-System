@@ -1,73 +1,89 @@
--- phpMyAdmin SQL Dump
--- version 4.9.0.1
--- https://www.phpmyadmin.net/
+-- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 24, 2019 at 07:25 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.7
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: moh
+-- ------------------------------------------------------
+-- Server version	8.0.12
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `moh`
---
-
--- --------------------------------------------------------
+ SET NAMES utf8mb4 ;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Table structure for table `health_professional`
 --
 
+DROP TABLE IF EXISTS `health_professional`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `health_professional` (
-  `h_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` int(11) DEFAULT NULL,
-  `request_letter` varchar(255) NOT NULL,
-  `cv` varchar(255) NOT NULL,
-  `degree` varchar(255) NOT NULL,
+  `request_letter` varchar(45) NOT NULL,
+  `cv` varchar(45) NOT NULL,
+  `degree` varchar(45) NOT NULL,
   `created_by` varchar(45) DEFAULT NULL,
   `created_date` datetime DEFAULT NULL,
   `update_by` varchar(45) DEFAULT NULL,
   `updated_date` datetime DEFAULT NULL,
   `voided_by` varchar(45) DEFAULT NULL,
-  `voided_date` datetime DEFAULT NULL
+  `voided_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_health_professional_user_idx` (`user`),
+  CONSTRAINT `fk_health_professional_user` FOREIGN KEY (`user`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='To store all request about health professional (e.g. Medical Doctors, Nurse, Pharmacists, ...)';
-
+/*!40101 SET character_set_client = @saved_cs_client */;
+/* COLLATE=utf8mb4_0900_ai_ci */
 --
 -- Dumping data for table `health_professional`
 --
 
-INSERT INTO `health_professional` (`h_id`, `user`, `request_letter`, `cv`, `degree`, `created_by`, `created_date`, `update_by`, `updated_date`, `voided_by`, `voided_date`) VALUES
-(5, 6, 'BulletinAuditForm_Josue AUCA.pdf', 'DHIS2 Online Academy DHIS2_101 Certificate _ DHIS 2 Academy - online.pdf', 'GDG_Organizer_Terms_and_Conditions_-_mutabazi.pdf', 'Josue Mutabazi', '2019-08-24 17:58:27', NULL, NULL, NULL, NULL);
-
--- --------------------------------------------------------
+LOCK TABLES `health_professional` WRITE;
+/*!40000 ALTER TABLE `health_professional` DISABLE KEYS */;
+/*!40000 ALTER TABLE `health_professional` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `health_professional_qualification`
 --
 
+DROP TABLE IF EXISTS `health_professional_qualification`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `health_professional_qualification` (
   `health_professional` int(11) NOT NULL,
-  `qualification` int(11) NOT NULL
+  `qualification` int(11) NOT NULL,
+  PRIMARY KEY (`health_professional`,`qualification`),
+  KEY `fk_qualification_idx` (`qualification`),
+  CONSTRAINT `fk_health_professional` FOREIGN KEY (`health_professional`) REFERENCES `health_professional` (`id`),
+  CONSTRAINT `fk_qualification` FOREIGN KEY (`qualification`) REFERENCES `qualification` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*  COLLATE=utf8mb4_0900_ai_ci */
+--
+-- Dumping data for table `health_professional_qualification`
+--
 
--- --------------------------------------------------------
+LOCK TABLES `health_professional_qualification` WRITE;
+/*!40000 ALTER TABLE `health_professional_qualification` DISABLE KEYS */;
+/*!40000 ALTER TABLE `health_professional_qualification` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `opening_posting`
 --
 
+DROP TABLE IF EXISTS `opening_posting`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `opening_posting` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` int(11) DEFAULT NULL,
   `tor` varchar(45) DEFAULT NULL,
   `start_date` datetime DEFAULT NULL,
@@ -76,146 +92,106 @@ CREATE TABLE `opening_posting` (
   `update_by` varchar(45) DEFAULT NULL,
   `updated_date` datetime DEFAULT NULL,
   `voided_by` varchar(45) DEFAULT NULL,
-  `voided_date` datetime DEFAULT NULL
+  `voided_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_opening_posting_user_idx` (`user`),
+  CONSTRAINT `fk_opening_posting_user` FOREIGN KEY (`user`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*  COLLATE=utf8mb4_0900_ai_ci */
+--
+-- Dumping data for table `opening_posting`
+--
 
--- --------------------------------------------------------
+LOCK TABLES `opening_posting` WRITE;
+/*!40000 ALTER TABLE `opening_posting` DISABLE KEYS */;
+/*!40000 ALTER TABLE `opening_posting` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `opening_posting_qualification`
 --
 
+DROP TABLE IF EXISTS `opening_posting_qualification`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `opening_posting_qualification` (
   `opening_posting` int(11) NOT NULL,
-  `qualification` int(11) NOT NULL
+  `qualification` int(11) NOT NULL,
+  PRIMARY KEY (`opening_posting`,`qualification`),
+  KEY `fk_opq_qualification_idx` (`qualification`),
+  CONSTRAINT `fk_opq_opening_posting` FOREIGN KEY (`opening_posting`) REFERENCES `opening_posting` (`id`),
+  CONSTRAINT `fk_opq_qualification` FOREIGN KEY (`qualification`) REFERENCES `qualification` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*  COLLATE=utf8mb4_0900_ai_ci */
+--
+-- Dumping data for table `opening_posting_qualification`
+--
 
--- --------------------------------------------------------
+LOCK TABLES `opening_posting_qualification` WRITE;
+/*!40000 ALTER TABLE `opening_posting_qualification` DISABLE KEYS */;
+/*!40000 ALTER TABLE `opening_posting_qualification` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `qualification`
 --
 
+DROP TABLE IF EXISTS `qualification`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `qualification` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
-  `description` varchar(45) DEFAULT NULL
+  `description` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*  COLLATE=utf8mb4_0900_ai_ci */
+--
+-- Dumping data for table `qualification`
+--
 
--- --------------------------------------------------------
+LOCK TABLES `qualification` WRITE;
+/*!40000 ALTER TABLE `qualification` DISABLE KEYS */;
+/*!40000 ALTER TABLE `qualification` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `names` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `telephone` varchar(45) DEFAULT NULL,
   `NID` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
-  `user_type` varchar(12) NOT NULL
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*  COLLATE=utf8mb4_0900_ai_ci */
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `names`, `email`, `telephone`, `NID`, `password`, `user_type`) VALUES
-(6, 'Josue Mutabazi', 'mutabazijosue1@gmail.com', '0786055919', '1199546121612126', NULL, 'Applicant');
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `health_professional`
---
-ALTER TABLE `health_professional`
-  ADD PRIMARY KEY (`h_id`),
-  ADD KEY `fk_health_professional_user_idx` (`user`);
-
---
--- Indexes for table `health_professional_qualification`
---
-ALTER TABLE `health_professional_qualification`
-  ADD PRIMARY KEY (`health_professional`,`qualification`),
-  ADD KEY `fk_qualification_idx` (`qualification`);
-
---
--- Indexes for table `opening_posting`
---
-ALTER TABLE `opening_posting`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_opening_posting_user_idx` (`user`);
-
---
--- Indexes for table `opening_posting_qualification`
---
-ALTER TABLE `opening_posting_qualification`
-  ADD PRIMARY KEY (`opening_posting`,`qualification`),
-  ADD KEY `fk_opq_qualification_idx` (`qualification`);
-
---
--- Indexes for table `qualification`
---
-ALTER TABLE `qualification`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `health_professional`
---
-ALTER TABLE `health_professional`
-  MODIFY `h_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `health_professional`
---
-ALTER TABLE `health_professional`
-  ADD CONSTRAINT `fk_health_professional_user` FOREIGN KEY (`user`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `health_professional_qualification`
---
-ALTER TABLE `health_professional_qualification`
-  ADD CONSTRAINT `fk_health_professional` FOREIGN KEY (`health_professional`) REFERENCES `health_professional` (`h_id`),
-  ADD CONSTRAINT `fk_qualification` FOREIGN KEY (`qualification`) REFERENCES `qualification` (`id`);
-
---
--- Constraints for table `opening_posting`
---
-ALTER TABLE `opening_posting`
-  ADD CONSTRAINT `fk_opening_posting_user` FOREIGN KEY (`user`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `opening_posting_qualification`
---
-ALTER TABLE `opening_posting_qualification`
-  ADD CONSTRAINT `fk_opq_opening_posting` FOREIGN KEY (`opening_posting`) REFERENCES `opening_posting` (`id`),
-  ADD CONSTRAINT `fk_opq_qualification` FOREIGN KEY (`qualification`) REFERENCES `qualification` (`id`);
-COMMIT;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-08-21 16:45:46

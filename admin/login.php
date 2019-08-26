@@ -32,7 +32,9 @@
                 $user = $_POST['email'];
                 $pass = $_POST['passwrd'];
 
-                $query = mysqli_query($conn, "SELECT * FROM users WHERE password = '$pass' AND email = '$user'");
+                $str = "SELECT * FROM users WHERE password = '$pass' AND email = '$user' AND user_type='Staff' ";
+
+                $query = mysqli_query($conn, $str);
                 $res = mysqli_fetch_assoc($query);
 
                 $user_name = $res['names'];
