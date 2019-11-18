@@ -51,7 +51,7 @@ if($conn->query($sql1) === TRUE) {
                                 $hpid = $row["id"];
                                 $sql5 = "INSERT INTO health_professional_qualification (health_professional,qualification) VALUES ('$hpid', '$professional')";
                                 if($conn->query($sql5) === FALSE) {
-                                    echo "Something went wrong!";
+                                    echo "Error: " . mysqli_error($conn);
                                 }
                                 break;
                             }
@@ -74,10 +74,9 @@ if($conn->query($sql1) === TRUE) {
         
                         $sub = "Successful Application Submission - MOH!";       
                         $res = mail($email, $sub, $mes);
-                        if ($res)
+                        if (!$res)
                             echo "Sent!";
-                        else
-                            echo "Failed!";
+                            
 
                     } else {
                         echo "Error: " . $conn->error;

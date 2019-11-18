@@ -26,10 +26,10 @@ SESSION_START();
                   if($rows == 1){
                     $_SESSION['user'] = $user_name;
 
-                    header("refresh:1;url=http://localhost/Job_Request_Tracker/admin/"); 
+                    header("refresh:1;url=http://localhost/JTA/admin/"); 
                     echo '<script type="text/javascript">alert("You successfully Logged in!");</script>';
                   }else{
-                    header("refresh:1;url=http://localhost/Job_Request_Tracker/"); 
+                    header("refresh:1;url=http://localhost/JTA/"); 
                     echo '<script type="text/javascript">alert("Failed to login! Double check your credentials!");</script>';
                   }
             }

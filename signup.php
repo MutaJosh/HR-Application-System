@@ -10,7 +10,7 @@ $passwd = $_POST['passwrd'];
 $sql = "INSERT INTO users (names, email, telephone, password, user_type) VALUES('$facility_name', '$fac_email', '$fac_tel', '$passwd', 'Staff')";
 
 if ($conn->query($sql) === TRUE) {
-    header("refresh:1;url=http://localhost/Job_Request_Tracker/"); 
+    header("refresh:1;url=http://localhost/JTA/"); 
     echo '<script type="text/javascript">alert("You successfully created an account!");</script>';
 } else {
     echo "Error: " . $conn->error;

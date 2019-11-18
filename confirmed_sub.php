@@ -22,7 +22,7 @@
                         <img src="./moh_logo.jpg" alt=""/>
                         <h3>Congrats!</h3>
                         <i>You successfully submitted the application!</i> <br><br>
-                        <a class="btn btn-light" type="button" href="index.php"/>Go Back</a><br/>
+                        <a class="btn btn-light" type="button" href="./">Homek</a><br/>
                     </div>
                     <!-- <div class="col-md-9 register-right">
 
