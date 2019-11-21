@@ -23,10 +23,8 @@
                         <img src="./img/moh_logo.jpg" alt=""/>
                         <h3>Welcome</h3>
                         <p>You are only required to fill all these fields and submit your application!</p>
-                        <i>If you're an administrator, press one of the buttons below!</i> <br> <br><br>
-                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#registerModal"> Register </button> 
-                            or
-                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#loginModal"> Login </button> 
+                         <i>This is reserved for administrators only!</i> <br> <br><br>
+                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#loginModal"> Administrators </button> 
 
                     </div>
                     <div class="col-md-9 register-right">
@@ -34,7 +32,7 @@
                         <!-- Employee -->
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <h3 class="register-heading">Fill out to start your application!</h3>
+                                <h3 class="register-heading">HR Application System - MoH Rwanda</h3>
 
                                 <form action="./submit_apply.php" method="POST" enctype="multipart/form-data">
 

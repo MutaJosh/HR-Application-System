@@ -8,14 +8,21 @@ SESSION_START();
 
 require_once ('../inc/conn.php');
 
-$sql = "SELECT u.id, u.names, u.email, u.telephone, u.NID, h.created_date, h.cv, h.request_letter, h.degree
-        FROM users AS u, health_professional AS h
-        WHERE u.id = h.user AND user_type = 'Applicant' 
-        ORDER BY h.created_date DESC ";
+// Children
+    $sql = "SELECT * FROM users WHERE user_type = 'Applicant'";
+    $result = mysqli_query($conn, $sql);  
+    $applicants =  mysqli_num_rows($result);
 
-$res = mysqli_query($conn, $sql);
+    $sql1 = "SELECT * FROM opening_posting";
+    $res1 = mysqli_query($conn, $sql1);
+    $post = mysqli_num_rows($res1);
+
+    if (!$result) {
+        echo "Error: " . mysqli_error($result);
+    }
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -84,6 +91,13 @@ $res = mysqli_query($conn, $sql);
           <span>Post Opportunities</span></a>
       </li>
 
+            <!-- Nav Item - Applicants -->
+            <li class="nav-item">
+        <a class="nav-link" href="logout.php">
+          <i class="fas fa-sign-out-alt fa-chart-area"></i>
+          <span>Logout</span></a>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
@@ -109,18 +123,10 @@ $res = mysqli_query($conn, $sql);
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
-
-          <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </form>
+          <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+<!--             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+ -->          </div>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -148,7 +154,7 @@ $res = mysqli_query($conn, $sql);
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin Admin</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Staff Member</span>
                 <img class="img-profile rounded-circle" src="img/user.png">
               </a>
               <!-- Dropdown - User Information -->
@@ -169,10 +175,7 @@ $res = mysqli_query($conn, $sql);
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-<!--             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
- -->          </div>
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">   </div>
 
           <!-- Content Row -->
           <div class="row">
@@ -184,7 +187,7 @@ $res = mysqli_query($conn, $sql);
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Applicants</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"> <?php echo $applicants; ?> </div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -201,7 +204,7 @@ $res = mysqli_query($conn, $sql);
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Available posts</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">50</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"> <?php echo $post; ?> </div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -220,7 +223,7 @@ $res = mysqli_query($conn, $sql);
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Allocated Applicants</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50</div>
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0</div>
                         </div>
                       </div>
                     </div>
@@ -239,7 +242,7 @@ $res = mysqli_query($conn, $sql);
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Applicants on waiting list</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">50</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800"> <?php echo $applicants - 0; ?> </div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -308,7 +311,12 @@ $res = mysqli_query($conn, $sql);
                     </span>
                     <span class="mr-2">
                       <i class="fas fa-circle text-info"></i>Allocated
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-fail"></i> Other
+                    </span>
                   </div>
+                  
                 </div>
               </div>
             </div>
@@ -350,7 +358,7 @@ $res = mysqli_query($conn, $sql);
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="logout.php">Logout</a>
         </div>
       </div>
     </div>

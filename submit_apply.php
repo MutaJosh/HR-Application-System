@@ -57,15 +57,15 @@ if($conn->query($sql1) === TRUE) {
                             }
                         }
 
-                        header("refresh:0;url=http://localhost/Job_Request_Tracker/confirmed_sub.php"); 
+                        header("refresh:0;url=http://localhost/JTA/confirmed_sub.php"); 
 
                         $mes = "
                         Hi there,
                         
                         Thank you for applying!
-                        We're be right back to you once there is an opportunity!
+                        We will be right back to you once there is an opportunity!
         
-                        Regards,       
+                        Best Regards,       
                         
                         
                         -----------------------

@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Tables</title>
+  <title>HR MoH</title>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -66,7 +66,7 @@
 
       <!-- Nav Item - Available Opp. -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="postO.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Post Opportunities</span></a>
       </li>
@@ -131,7 +131,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin Admin</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrator</span>
                 <img class="img-profile rounded-circle" src="img/user.png">
               </a>
               <!-- Dropdown - User Information -->
@@ -147,6 +147,62 @@
 
         </nav>
         <!-- End of Topbar -->
+
+      <div class="container">
+
+<div class="card o-hidden border-0 shadow-lg my-5">
+  <div class="card-body p-0">
+    <!-- Nested Row within Card Body -->
+    <div class="row">
+      <div class="col-lg-11 ml-5">
+        <div class="p-5">
+          <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Available Post Report Form.</h1>
+          </div>
+          <form class="user">
+            <div class="form-group row">
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <p>Health Facitlity, Hosptal, ...</p>
+                <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Where is the post available?">
+              </div>
+              <div class="col-sm-6">
+                <p>District</p>
+                <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="In which district?">
+              </div>
+            </div>
+            <div class="form-group">
+              <p>Which post is available?</p>
+              <!-- <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address"> -->
+              <select name="" id="" class="form-control ">
+                <option value="Nurse">Nurse</option>
+                <option value="Pha">Pharmacist</option>
+                <option value="">Medical Doctor</option>
+              </select>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <p>Expected start date</p>
+                <input type="date" class="form-control form-control-user" id="exampleInputPassword" >
+              </div>
+              <div class="col-sm-6">
+                <p>Terms of Reference</p>
+                <input type="file" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+              </div>
+            </div>
+
+            <a href="#" class="btn col-sm-12 btn-primary btn-user btn-block mt-5">
+              submit an opportunity
+            </a>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+      
 
 
       </div>
@@ -186,7 +242,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="logout.php">Logout</a>
         </div>
       </div>
     </div>

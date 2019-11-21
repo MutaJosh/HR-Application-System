@@ -5,7 +5,7 @@
 
   SESSION_DESTROY();
 
-
-
   header("Location: ../");
+
+  
  ?>
